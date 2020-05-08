@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <label id = 'lblTime'></label>
+    <br>
+     
+    <script> 
+        let data_obj = new FormData(); // window.onload TODO
+
+        const fromDate = new Date();
+        let timeSpent = 0;
+        const  url = new URL(window.location.href);
+        let id = url.searchParams.get("id");
+        // if id not found, we presume it is the first image
+        if (id === null) {
+            id = 1;
+        }
+        else {
+            id = parseInt(id);
+        }
+
+        updateTime();
+        JavaScriptFetch();
+
+        const img = document.createElement("img")
+        img.src = `${url.origin}/img/${id}.png`   
+        img.style.width="500px";
+        img.style.height="450px"
+        document.body.appendChild(img);
+        
+        document.body.appendChild(document.createElement("br"))
+
+        const next = document.createElement("a");
+        next.href = `http://localhost:8080/?id=${id+1}`
+        next.textContent = "Next"
+
+        const prev = document.createElement("a");
+        prev.href = `http://localhost:8080/?id=${id-1}`
+        prev.textContent = "Prev"
+        
+        window.addEventListener("unload", () => {
+            const b = navigator.sendBeacon("http://localhost:8080/",data_obj)
+        })
+
+        document.body.appendChild(next);
+        document.body.appendChild(document.createElement("br"))
+
+        document.body.appendChild(prev);
+
+        function updateTime()
+        {
+            const toDate = new Date();
+            timeSpent = toDate.getTime() - fromDate.getTime();
+            document.getElementById("lblTime").textContent = timeSpent + "ms"
+            setTimeout(updateTime, 100)
+        } 
+        
+        function callback(data) {
+            let field;
+            for (field in data) {
+                data_obj.append(field, data[`${field}`])
+                console.log(field, data[`${field}`])
+            }
+        }
+            
+        function JavaScriptFetch() {
+            var script = document.createElement('script');
+            script.type = 'text/javascript';
+            script.src = "https://geolocation-db.com/jsonp";
+            var h = document.getElementsByTagName('script')[0];
+            h.parentNode.insertBefore(script, h);
+        }
+        
+    </script>
+
+</body>
+</html>
+
+
+
+
+
+
