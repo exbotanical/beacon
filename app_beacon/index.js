@@ -1,26 +1,26 @@
 const express = require("express");
 const app = express();
-var multer  = require("multer");
-var upload = multer();
-var { MongoClient } = require("mongodb");
-var assert = require("assert");
+const multer  = require("multer");
+const upload = multer();
+const { MongoClient } = require("mongodb");
+const assert = require("assert");
 require('dotenv').config();
 
-async function main() {
+const main = async () => {
     /** 
     *  Instantiate server, listen for beacon responses and persist to database.
     **/
     const dbURI = process.env.URI;
-    
-    app.get("/", (req, res) => res.sendFile(`${__dirname}/index.html`));
+    app.use(express.static('public'))
 
-    app.get("/img/:id", (req, res)=> {
-        const id = req.params.id;
-        res.sendFile(`${__dirname}/img/${id}`);
-    });
+    // app.get("/", (req, res) => res.sendFile(`${__dirname}/index.html`));
 
-    app.post("/", upload.none(), async function(req, res) {
-        
+    // app.get("/img/:id", (req, res)=> {
+    //     const id = req.params.id;
+    //     res.sendFile(`${__dirname}/img/${id}`);
+    // });
+
+    app.post("/", upload.none(), async (req, res) => {
         let data = {
             country_code: req.body.country_code,
             country_name: req.body.country_name,
@@ -33,10 +33,10 @@ async function main() {
         };
 
         try {
-            // Connect to the MongoDB cluster
-            MongoClient.connect(dbURI, { useUnifiedTopology: true }, async function (err, db) {
+            MongoClient.connect(dbURI, { useUnifiedTopology: true }, async (err, db) => {
                 assert.equal(null, err);
                 await upsertEntryQuaIpv4(db, req.body.IPv4, data);
+                    console.log("added")
                     db.close();
                 });
         } 
@@ -53,7 +53,7 @@ async function main() {
  * @param {string} ipv4Address Entry IPv4 Address, used to create/update entry
  * @param {object} entryData Data object, collation of user_data fields
  */
-async function upsertEntryQuaIpv4(dbClient, ipv4Address, entryData) {
+const upsertEntryQuaIpv4 = async (dbClient, ipv4Address, entryData) => {
     const result = await dbClient.db("test").collection("user_data")
         .updateOne(
             { ipv4_address: ipv4Address }, 

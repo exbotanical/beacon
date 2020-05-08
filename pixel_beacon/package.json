@@ -1,0 +1,31 @@
+{
+  "name": "pixel_beacon",
+  "version": "0.1.0",
+  "description": "serve a 1x1 tracking pixel for user data harvesting in pure JS",
+  "main": "server.js",
+  "scripts": {
+    "test": "node server.js",
+    "start": "node server.js"
+  },
+  "keywords": [
+    "web",
+    "beacon",
+    "tracking",
+    "pixel",
+    "node",
+    "tracking",
+    "javascript",
+    "analytics",
+    "user",
+    "analytics"
+  ],
+  "author": "Matthew T Zito (goldmund)",
+  "license": "MIT",
+  "dependencies": {
+    "assert": "^2.0.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongodb": "^3.5.7",
+    "multer": "^1.4.2"
+  }
+}
