@@ -18,9 +18,9 @@ def epistem():
         main()
         
 def main(): 
-    data='I am a bot'
+    data='Selected option text here'
     url = 'https://docs.google.com/forms/d/*********************/formResponse'
-    form_data = {'entry.1069785764':data}
+    form_data = {'entry.1234567890':data}
     user_agent = {'Referer':'https://docs.google.com/forms/d/*********************/viewform','User-Agent': "Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.52 Safari/537.36"}
     try:
         r = requests.post(url, data=form_data, headers=user_agent)
