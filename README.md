@@ -69,6 +69,6 @@ app.get("/:id/pixel.png", async (req, res) => {
         }
     });
 ```
-<a name="fn1">1</a>: What constitutes a *trial* (and *success* thereof) will be elucidated in an imminent update to this document.
+##### <a name="fn1">1</a>: What constitutes a *trial* (and *success* thereof) will be elucidated in an imminent update to this document.
 
 Disclaimer: This software and all contents therein were created for research use only. I neither condone nor hold, in any capacity, responsibility for the actions of those who might intend to use this software in a manner malicious or otherwise illegal.
