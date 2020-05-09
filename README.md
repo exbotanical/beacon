@@ -10,7 +10,7 @@ To date, the following endeavors have endured trial successfully[^1]:
 
 ## Embedding an Executable Binary Inside of a JPG (OS-agnostic)
 Documentation pending. For now, enjoy the demonstration:
-[!Demo](https://github.com/MatthewZito/WebBeacons/blob/master/image_beacon/imgbeacon.gif)
+![Demo](https://github.com/MatthewZito/WebBeacons/blob/master/image_beacon/imgbeacon.gif)
 
 ## Tracking Pixel
 Tracking pixels have long been relied upon as a lightweight solution for analytics and data harvesting. The theory is quite simple, albeit clever: We take a standard GET request and transmogrify it (or so it seems, given the many [often esoteric] nuanced behaviors of HTTP) into a vehicle for delivering data.
