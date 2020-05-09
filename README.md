@@ -38,16 +38,21 @@ So, what happens when the request is made? This is where tracking pixels and bea
 Most tracking pixel designs I've encountered actually serve a static GIF. In fact, given tracking pixels are almost exclusively proprietary technologies, you're perhaps looking at the only wholly open-source tracking pixel that isn't using an API-generated tracking script or token. 
 
 Instead of serving a static GIF, we are going to generate our pixel ad hoc. That is, when the resource is requested, we create it server-side: 
+
+First, we construct the hex distrubution needed.
 ```
-// First, we construct the hex distrubution needed.
 const imgData = [
     0x47,0x49, 0x46,0x38, 0x39,0x61, 0x01,0x00, 0x01,0x00, 0x80,0x00, 0x00,0xFF, 0xFF,0xFF,
     0x00,0x00, 0x00,0x21, 0xf9,0x04, 0x04,0x00, 0x00,0x00, 0x00,0x2c, 0x00,0x00, 0x00,0x00,
     0x01,0x00, 0x01,0x00, 0x00,0x02, 0x02,0x44, 0x01,0x00, 0x3b
     ];
-// allocate hex data to instantiate new Buffer
+```
+Allocate hex data to instantiate new Buffer
+```
 const imgBuf = Buffer.from(imgData);
-// a tracking pixel of campaign :id is requested; we persist our data and serve the buffer
+```
+A tracking pixel of campaign :id is requested; we persist our data and serve the buffer
+```
 app.get("/:id/pixel.png", async (req, res) => {
         // collate data
         ...
