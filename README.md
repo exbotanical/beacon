@@ -2,7 +2,7 @@
 
 This repository collates experiments concerned with establishing *low-resource* web-beacons, automating remote data-logging, and utilizing many of the more esoteric HTTP status codes and the myriad interesting things we can do with them.
 
-To date, the following endeavors have endured trial successfully[^1] :
+To date, the following endeavors have endured trial successfully([^1]):
  - Embedding a counter beacon inside of image byte-code. 
  - Data harvesting via Beacon API
  - Data harvesting via pure JS tracking pixel (written from scratch; no pre-generated tokens)
@@ -70,6 +70,6 @@ app.get("/:id/pixel.png", async (req, res) => {
     });
 ```
 
-[^1]: What constitutes a *trial* (and *success* thereof) will be elucidated in an imminent update to this document.
+([^1]: What constitutes a *trial* (and *success* thereof) will be elucidated in an imminent update to this document.)
 
 Disclaimer: This software and all contents therein were created for research use only. I neither condone nor hold, in any capacity, responsibility for the actions of those who might intend to use this software in a manner malicious or otherwise illegal.
