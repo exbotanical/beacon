@@ -9,6 +9,7 @@ const main = async () => {
     * Instantiate server, listen for GIF requests. Pull request query parameters, persist to database 
     * contingent on tracking pixel identification string.
     **/
+   
     const dbURI = process.env.URI;
     app.use(express.static('public'));
 
@@ -17,6 +18,7 @@ const main = async () => {
         0x00,0x00, 0x00,0x21, 0xf9,0x04, 0x04,0x00, 0x00,0x00, 0x00,0x2c, 0x00,0x00, 0x00,0x00,
         0x01,0x00, 0x01,0x00, 0x00,0x02, 0x02,0x44, 0x01,0x00, 0x3b
         ];
+
     const imgBuf = Buffer.from(imgData);
 
     app.get("/:id/pixel.png", async (req, res) => {
