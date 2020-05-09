@@ -7,6 +7,10 @@ To date, the following endeavors have endured trial successfully<sup>[1](#fn1)</
  - Data harvesting via Beacon API
  - Data harvesting via pure JS tracking pixel (written from scratch; no pre-generated tokens)
 
+## What is a Web Beacon?
+A Web beacon is a HTML-embedded script used to monitor the behavior of the given user visiting the website or opening the email to which it has been applied.
+
+The beacon is typically a resource (e.g. a 1x1 pixel GIF) which, when requested by the client, passes along to the server information such as the IP address of the machine that retrieved the resource, the time the beacon was viewed and for how long, the type of browser that retrieved the resource, et cetera.
 
 ## Embedding an Executable Binary Inside of a JPG (OS-agnostic)
 Documentation pending. For now, enjoy the demonstration:
