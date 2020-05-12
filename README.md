@@ -13,7 +13,11 @@ A Web beacon is a HTML-embedded script used to monitor the behavior of the given
 The beacon is typically a resource (e.g. a 1x1 pixel GIF) which, when requested by the client, passes along to the server information such as the IP address of the machine that retrieved the resource, the time the beacon was viewed and for how long, the type of browser that retrieved the resource, et cetera.
 
 ## Embedding an Executable Binary Inside of a JPG (OS-agnostic)
-Documentation pending. For now, enjoy the demonstration:
+This was a strange one. A friend asked me if there was a way to count how many times an image had been opened, to track its journey across the web. I endeavored to do this, knowing the solution would essentially involve tampering with embedded or compiled executables.
+
+I've used pyinstaller here. This is a methodology commonly employed by malware developers; the original image is compiled with the executable (which simply makes a form POST to the campaign's Google Form document). macos by default does not display extensions, but I have applied the [right-to-left override](https://krebsonsecurity.com/tag/right-to-left-override/) to spoof the extension to jpg. I've tested various compilation configurations and have found something I am happy with, which works quietly and as designed on Windows, macOS, and Linux (tested on Ubuntu, Arch, and Kali thus far).
+
+As you can see, every time the image is opened, the form is mysteriously updated...
 ![Demo](https://github.com/MatthewZito/WebBeacons/blob/master/embedded/imgbeacon.gif)
 
 ## Tracking Pixel
