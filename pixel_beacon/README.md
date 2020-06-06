@@ -6,3 +6,8 @@ $ BABEL_ENV=production npm run build
 ```
 - Call minified src in head of any given HTML file.
 
+Running with Docker:
+```
+docker run -p 8080:80 --env-file ./.env tracking-pixel:latest
+```
+

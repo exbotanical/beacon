@@ -12,7 +12,7 @@
     api.send = (pid) => {
         params = params.join("&");
         const pixel = document.createElement("img");
-        pixel.src = `http://localhost:8080/${pid}/pixel.png?${params}`;
+        pixel.src = `${process.env.URI}/${pid}/pixel.png?${params}`;
         document.body.appendChild(pixel);
     };
 

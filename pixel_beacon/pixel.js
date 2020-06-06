@@ -8,7 +8,7 @@ function callback(data) {
             window.nav9.queue = [["toQueryString", data_obj],["send", 0]];
         }
         const script = document.createElement('script');
-        script.src = 'http://localhost:8080/script.js';
+        script.src = `${process.env.URI}/script.js`;
         script.async = true;
         const initScript = document.getElementsByTagName('script')[0];
         initScript.parentNode.insertBefore(script, initScript);
