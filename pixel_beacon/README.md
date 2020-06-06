@@ -8,6 +8,6 @@ $ BABEL_ENV=production npm run build
 
 Running with Docker:
 ```
-docker run -p 8080:80 --env-file ./.env tracking-pixel:latest
+docker run -p 80:8080 --env-file ./.env tracking-pixel:latest
 ```
 
