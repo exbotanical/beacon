@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "node server.js",
-    "build": "BABEL_ENV=production && babel pixel.js --out-file public/pixel.min.js && babel script.js --out-file public/script.min.js",
+    "build": "BABEL_ENV=production && babel pixel.js --out-file public/pixel.min.js",
     "start": "npm run build && node ."
   },
   "keywords": [
