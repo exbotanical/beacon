@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+    server:
+        container_name: tracking-pixel
+        restart: always
+        build: 
+            context: .
+            dockerfile: Dockerfile
+        command: npm run start
+        env_file: 
+            - .env
+        volumes:
+            - node_modules:/app/node_modules
+            - public:/app/public
+        ports:
+            - "80:8080"
+volumes:
+    node_modules: 
+    public:
+    
