@@ -47,7 +47,7 @@ Most tracking pixel designs I've encountered actually serve a static GIF. In fac
 
 Instead of serving a static GIF, we are going to generate our pixel ad hoc. That is, when the resource is requested, we create it server-side: 
 
-First, we construct the hex distrubution needed.
+First, we construct the hex distribution needed.
 ```
 const imgData = [
     0x47,0x49, 0x46,0x38, 0x39,0x61, 0x01,0x00, 0x01,0x00, 0x80,0x00, 0x00,0xFF, 0xFF,0xFF,
