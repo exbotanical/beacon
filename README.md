@@ -21,13 +21,13 @@ As you can see, every time the image is opened, the form is mysteriously updated
 ![Demo](https://github.com/MatthewZito/WebBeacons/blob/master/embedded/imgbeacon.gif)
 
 ## Tracking Pixel
-Tracking pixels have long been relied upon as a lightweight solution for analytics and data harvesting. The theory is quite simple, albeit clever: We take a standard GET request and transmogrify it (or so it seems, given the many [often esoteric] nuanced behaviors of HTTP) into a vehicle for delivering data *to* the resource server.
+Tracking pixels have long been relied upon as a lightweight solution for analytics and data harvesting. The theory is quite simple, albeit clever: We take a standard GET request and manipulate it into a vehicle for delivering data *to* the resource server.
 
-We utilize this 'GET conduit' by collating the desired data into query parameters, which are then interpolated into what is the `src` attribute/URI for a 1x1 pixel GIF (standard is a GIF given it is in this context essentially the smallest resource one can serve). The GIF is criticial here: we need to serve an `img` tag in our webpage (or email) so the client will request said resource.
+We utilize this 'GET conduit' by collecting the exfiltrated data into query parameters, which are then appended onto the `src` attribute/URI for a 1x1 pixel GIF (standard is a GIF given it is in this context essentially the smallest resource one can serve). The GIF is criticial here: we need to serve an `img` tag in our webpage (or email) so the client will request said resource.
 
-The client will indeed request the GIF resource, however, this request carries with it all of the harvested parameters, formatted and ready to be persisted into a database.
+The email or browser client will request the GIF resource; this request will include all of the harvested parameters, formatted and ready to be persisted into a database.
 
-I've been using MongoDB across my tracking campaigns; a NOSQL data distribution seemed to me most robust for accommodating the types of data operations which will be conducted post-processing (I am developing a client for constructing [algebraic] topological graphs of collected data). I typically assign my pixels a tracking ID; database collections are instantiated dynamically and correlate to this ID:
+I've been using MongoDB across my tracking campaigns; a NOSQL data distribution seemed to me most robust for accommodating the types of data operations which will be conducted here (I am developing a client for assembling topological graphs of collected data, so this format is especially useful here). I typically assign my pixels a tracking ID; database collections are instantiated dynamically and correlate to this ID:
 
 ```
 const upsertEntryQuaIpv4 = async (dbClient, ipv4Address, entryData, pixelIdentifier) => {
